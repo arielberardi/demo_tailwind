@@ -10,5 +10,58 @@
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
     = javascript_importmap_tags
   %body
-    %main.container.mx-auto.mt-28.px-5.flex
+    %nav.relative.container.mx-auto.p-6
+      .flex.items-center.justify-between
+        .pt-2= image_tag('logo.svg')
+        .hidden.space-x-6.md:flex
+          %a.hover:text-darkGrayishBlue{ href: '#' } Pricing
+          %a.hover:text-darkGrayishBlue{ href: '#' } Product
+          %a.hover:text-darkGrayishBlue{ href: '#' } About Us
+          %a.hover:text-darkGrayishBlue{ href: '#' } Careers
+          %a.hover:text-darkGrayishBlue{ href: '#' } Community
+        %a.hidden.p-3.px-6.pt-2.text-white.bg-brightRed.rounded-full.baseline.md:block.hover:bg-brightRedLight{ href: '#' } 
+          Get Started
+        %button#menu-btn.block.hamburger.md:hidden.focus:outline-none
+          %span.hamburger-top
+          %span.hamburger-middle
+          %span.hamburger-bottom
+      
+      .md:hidden
+        %div#menu.hidden.absolute.flex-col.items-center.left-6.right-6.drop-shadow-md.self-end.py-8.mt-10.space-y-6.font-bold.bg-white.sm:w-auto.sm:self-center
+          %a.hover:text-darkGrayishBlue{ href: '#' } Pricing
+          %a.hover:text-darkGrayishBlue{ href: '#' } Product
+          %a.hover:text-darkGrayishBlue{ href: '#' } About Us
+          %a.hover:text-darkGrayishBlue{ href: '#' } Careers
+          %a.hover:text-darkGrayishBlue{ href: '#' } Community
+    %main
       = yield
+    %footer.bg-veryDarkBlue
+      .container.flex.flex-col-reverse.justify-between.px-6.py-10.mx-auto.space-y-8.md:flex-row.md:space-y-0
+        .flex.flex-col-reverse.items-center.justify-between.space-y-12.md:flex-col.md:space-y-0.md:items-start
+          .mx-auto.my-6.text-center.text-white.md:hidden
+            Copyright &copy; 2022, All Rights Reserved
+          .flex
+            =image_tag('logo-white.svg', class: 'h-8')
+          .flex.justify-center.space-x-4
+            %a{ href: '#' }=image_tag('icon-facebook.svg', class: 'h-8')
+            %a{ href: '#' }=image_tag('icon-youtube.svg', class: 'h-8')
+            %a{ href: '#' }=image_tag('icon-twitter.svg', class: 'h-8')
+            %a{ href: '#' }=image_tag('icon-pinterest.svg', class: 'h-8')
+            %a{ href: '#' }=image_tag('icon-instagram.svg', class: 'h-8')
+        .flex.justify-around.space-x-32
+          .flex.flex-col.space-y-3.text-white
+            %a.hover:text-brightRed{ href: '#' } Home
+            %a.hover:text-brightRed{ href: '#' } Pricing
+            %a.hover:text-brightRed{ href: '#' } Products
+            %a.hover:text-brightRed{ href: '#' } About
+          .flex.flex-col.space-y-3.text-white
+            %a.hover:text-brightRed{ href: '#' } Careers
+            %a.hover:text-brightRed{ href: '#' } Community
+            %a.hover:text-brightRed{ href: '#' } Privacy Policy
+        .flex.flex-col.justify-between
+          = form_with do |f|
+            .flex.space-x-3
+              = f.text_field :query, class: 'flex-1 px-4 rounded-full focus:outline-none', placeholder: 'Updated in your inbox'
+              = f.submit 'Go', class: 'px-6 py-2 text-white rounded-full bg-brightRed hover:bg-brightRedLight focus:outline-none'
+          .hidden.text-white.md:block
+            Copyright &copy; 2022, All Rights Reserved
